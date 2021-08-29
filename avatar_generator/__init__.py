@@ -76,7 +76,11 @@ class Avatar(object):
         """
         path = os.path.join(os.path.dirname(__file__), 'data',
                             "Inconsolata.otf")
-        return ImageFont.truetype(path, size=int(0.8 * size))
+        try:
+            return ImageFont.truetype(path, size=int(0.8 * size))
+        except:
+            font = ImageFont.load_default()
+            return font
 
     @staticmethod
     def _text(string):
